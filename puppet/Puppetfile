@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+forge "https://forgeapi.puppetlabs.com"
+
+mod 'puppetlabs-apache'
+mod 'puppetlabs-mysql'
+mod 'puppet-nodejs', '3.0.0'
+mod 'mayflower-php'
+mod 'ajcrowe-supervisord'
+mod 'jdowning-awscli'
+mod 'walkamongus-codedeploy'
+mod 'saz-rsyslog'
+mod 'ghoneycutt-ssh'
+mod 'petems-swap_file'

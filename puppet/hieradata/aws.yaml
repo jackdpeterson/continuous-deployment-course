@@ -1,0 +1,53 @@
+---
+version: 5
+site_reliability_engineering::user: 'ubuntu'
+site_reliability_engineering::group: 'ubuntu'
+php::manage_repos: true
+php::globals::php_version: '7.2'
+php::ensure: latest
+php::fpm: true
+php::phpunit: false
+php::package_prefix: 'php7.2-'
+php::settings:
+  PHP/post_max_size: '25M'
+  PHP/memory_limit: '256M'
+  PHP/upload_max_filesize: '20M'
+  Date/date.timezone: 'Etc/UTC'
+  iconv/iconv.input_encoding: 'UTF-8'
+  iconv/iconv.internal_encoding: 'UTF-8'
+  iconv/iconv.output_encoding: 'UTF-8'
+php::cli::settings:
+  PHP/memory_limit: '512M'
+php::extensions:
+  curl:
+    package_prefix: 'php7.2-'
+  gd:
+    package_prefix: 'php7.2-'
+  imagick:
+    package_prefix: 'php7.2-'
+  intl:
+    package_prefix: 'php7.2-'
+  json:
+    package_prefix: 'php7.2-'
+  mbstring:
+    package_prefix: 'php7.2-'
+  mysql:
+    package_prefix: 'php7.2-'
+  readline:
+    package_prefix: 'php7.2-'
+  redis:
+    package_prefix: 'php-'
+  pdo:
+    package_prefix: 'php7.2-'
+  pdo-mysql:
+    package_prefix: 'php7.2-'
+  soap:
+    package_prefix: 'php7.2-'
+  zip:
+    package_prefix: 'php7.2-'
+sshd_allow_tcp_forwarding: 'no'
+sshd_password_authentication: 'no'
+permit_root_login: 'no'
+sshd_config_port: '22'
+
+
