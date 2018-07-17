@@ -33,20 +33,6 @@ class { 'awscli':
   require => [Package['ruby']]
 }
 
-# # CodeDeployClient IAM User is attached via IAM role ##
-
-file { '/usr/bin/aws':
-  ensure => 'link',
-  target => '/usr/local/bin/aws',
-  owner  => 'root',
-
-  group  => 'root',
-  mode   => '0755'
-}
-
-class { 'codedeploy':
-  require => [File['/usr/bin/aws'], Package['gdebi'], Package['ruby']]
-}
 
 # # Non-Local stuff ##
 
@@ -173,4 +159,19 @@ apache::vhost { 'codedeploy':
   error_log_pipe    => "||/usr/bin/logger -t httpd -i -p local4.err",
   access_log_pipe   =>
     '|$/bin/grep -E --line-buffered -v \'status_20[0-9]\' | /usr/bin/logger -thttpd -i -p local4.info',
+}
+
+# # CodeDeployClient IAM User is attached via IAM role ##
+
+file { '/usr/bin/aws':
+  ensure => 'link',
+  target => '/usr/local/bin/aws',
+  owner  => 'root',
+
+  group  => 'root',
+  mode   => '0755'
+}
+
+class { 'codedeploy':
+  require => [File['/usr/bin/aws'], Package['gdebi'], Package['ruby']]
 }

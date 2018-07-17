@@ -10,4 +10,4 @@ sudo ln -s /opt/puppetlabs/puppet/bin/puppet /usr/local/bin/puppet
 cd puppet && librarian-puppet install
 
 ## apply the puppet plan
-sudo puppet apply /home/ubuntu/continuous-deployment-course/puppet/manifests/awscdimage72.pp --modulepath=/home/ubuntu/continuous-deployment-course/puppet/modules/ --hiera_config=/home/ubuntu/continuous-deployment-course/puppet/aws.yaml
+sudo puppet apply /home/ubuntu/continuous-deployment-course/puppet/manifests/awscdimage72.pp --modulepath=/home/ubuntu/continuous-deployment-course/puppet/modules/ --hiera_config=/home/ubuntu/continuous-deployment-course/puppet/base.yaml

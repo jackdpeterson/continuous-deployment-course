@@ -4,5 +4,5 @@ defaults:
     datadir: hieradata
     data_hash: yaml_data
 hierarchy:
-    - name: "aws"
-      path: "aws.yaml"
+    - name: "base"
+      path: "base.yaml"
