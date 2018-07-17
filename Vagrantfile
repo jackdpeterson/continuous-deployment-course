@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
 
 $script_bindfs = "export DEBIAN_FRONTEND=noninteractive;
       if ! grep -qs '/home/vagrant/build/mirrors/web' /proc/mounts; then
-          mkdir -p /home/vagrant/build/mirrors/web
+          mkdir -p /var/www/domains/identity.example.local
           bindfs -u vagrant -g vagrant /mnt/web/ /var/www/domains/identity.example.local/;
       fi;
   "
@@ -61,6 +61,7 @@ $local_modules = "export DEBIAN_FRONTEND=noninteractive; cd /vagrant/puppet && c
     # turn the virtual disk into an SSD- this seems to have a noticeable performance improvement on MBPs with an SSD
     #v.customize ["storageattach", v.name, "--storagectl=IDE Controller", "--port=0", "--device=0", "--nonrotational=on", "--type=hdd", "--medium=iscsi"]
     v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
+    v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
   end
 
   # private network is required for NFS shares
