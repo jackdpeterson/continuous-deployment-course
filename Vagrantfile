@@ -42,14 +42,10 @@ $librarian_script = "export DEBIAN_FRONTEND=noninteractive; cd /vagrant/puppet &
   config.vm.provision "shell", inline: $librarian_script, name: "librarian-puppet"
 
 
-$local_modules = "export DEBIAN_FRONTEND=noninteractive; cd /vagrant/puppet && cp -r /vagrant/puppet/local_modules/* /vagrant/puppet/modules/"
-  config.vm.provision "shell", inline: $local_modules, name: "move local modules into modules folder after librarian-puppet has installed"
-
-
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "puppet/manifests"
     puppet.manifest_file = "vagrant.pp"
-    puppet.hiera_config_path = "puppet/base.yaml"
+    puppet.hiera_config_path = "puppet/vagrant.yaml"
     puppet.module_path = "puppet/modules"
     puppet.options = "--verbose"
   end
